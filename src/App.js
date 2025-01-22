@@ -25,7 +25,6 @@ function Body() {
   return (
     <div className="body_container">
       {/* Work Experience */}
-      {/* Skills */}
       {/* Contacts */}
     </div>
   );
