@@ -1,6 +1,168 @@
 .header_container {
   display: flex;
-  align-items: flex-start;
-  margin-left: -100% !important;
   position: sticky;
+  top: 0;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.1px);
+  -webkit-backdrop-filter: blur(9.1px);
+  border: 1px solid rgba(255, 255, 255, 0.513);
+  z-index: 1;
+}
+
+.header_container a {
+  text-decoration: none;
+  color: black;
+  margin-left: auto;
+  height: 20px;
+  width: 8em;
+  position: relative;
+  top: 2em;
+  right: 2em;
+  font-family: "Sohne Regular";
+}
+
+.header_container h1 {
+  position: relative;
+  left: 1em;
+  cursor: pointer;
+}
+
+.body_about {
+  padding-top: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.body_workexperience {
+  padding-top: 10em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.body_workexp_grid {
+  margin: 10vh 0vw;
+  box-sizing: border-box;
+  display: grid;
+  grid-gap: 4em;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.body_workexp_grid p {
+  font-size: 15px;
+}
+
+.nanban,
+.sorice,
+.aveon,
+.iresponsive,
+.leora {
+  position: relative;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.1px);
+  -webkit-backdrop-filter: blur(9.1px);
+  border: 1px solid rgba(255, 255, 255, 0.513);
+}
+
+.body_skill {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.body_skill_check {
+  position: relative;
+  align-self: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.1px);
+  -webkit-backdrop-filter: blur(9.1px);
+  border: 1px solid rgba(255, 255, 255, 0.513);
+  display: grid;
+  grid-gap: 4em;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.body_skill_check button {
+  position: relative;
+  border: none;
+  width: 100%;
+  background: transparent;
+  transition: 1s;
+}
+
+.body_skill_check button:hover {
+  background: transparent;
+  border: none;
+  border-radius: 16px;
+  background-color: rgba(85, 85, 85, 0.106);
+  transition: 0.4s;
+}
+
+.active {
+  border: none;
+  border-radius: 16px;
+  background-color: rgba(85, 85, 85, 0.106);
+  color: white;
+  border-radius: 12px;
+  padding: 10px 20px;
+  transition: 2s;
+}
+
+.inactive {
+  transition: 2s;
+}
+
+.body_skill_list {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.1px);
+  -webkit-backdrop-filter: blur(9.1px);
+  border: 1px solid rgba(255, 255, 255, 0.513);
+  margin: auto;
+}
+
+@-webkit-keyframes text-blur-out {
+  0% {
+    filter: blur(12px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+@keyframes text-blur-out {
+  100% {
+    -webkit-filter: blur(0.01);
+    filter: blur(0.01);
+  }
+  0% {
+    -webkit-filter: blur(12px) opacity(0%);
+    filter: blur(12px) opacity(0%);
+  }
+}
+
+.text-blur {
+  filter: blur(12px);
+  transition: filter 1s ease-in-out;
+}
+
+.text-clear {
+  filter: blur(0px);
+  transition: filter 1s ease-in-out;
 }
