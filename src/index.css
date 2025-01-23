@@ -8,8 +8,14 @@
   src: url(../src/Assets/Fonts/Sohne\ Bold.otf);
 }
 
+canvas {
+  position: fixed;
+  touch-action: none;
+}
+
 :root {
-  background-color: hsl(114, 22%, 64%);
+  background-color: black;
+  color: white;
 }
 
 .main {
@@ -29,4 +35,6 @@ h6,
 a,
 p {
   font-family: "Sohne Regular";
+  color: white;
+  text-decoration: none;
 }
