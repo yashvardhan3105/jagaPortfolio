@@ -8,10 +8,12 @@
   src: url(../src/Assets/Fonts/Sohne\ Bold.otf);
 }
 
+:root {
+  background-color: hsl(114, 22%, 64%);
+}
+
 .main {
-  padding: 0 20%;
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
 
@@ -23,6 +25,8 @@ h2 {
 h3,
 h4,
 h5,
-h6 {
+h6,
+a,
+p {
   font-family: "Sohne Regular";
 }
