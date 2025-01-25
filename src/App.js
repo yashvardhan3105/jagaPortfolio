@@ -76,9 +76,39 @@ export default function App() {
 
   return (
     <div className="container">
+      <div className="sticky-wrapper">
+        <Navbar />
+      </div>
       <Header />
       <Body />
       <Footer />
+    </div>
+  );
+}
+
+function Navbar() {
+  return (
+    <div className="navbar">
+      <div className="header_container">
+        <h1>Jaga</h1>
+        <div className="header_svglogo">
+          <span>
+            <a href="#skills">Skills</a>
+          </span>
+          <span>
+            <a href="#experience">Experience</a>
+          </span>
+          <span>
+            <a href="#projects">Projects</a>
+          </span>
+          <span>
+            <a href="#interests">Interests</a>
+          </span>
+        </div>
+        <div>
+          <a href="https://drive.google.com">Resume</a>
+        </div>
+      </div>
     </div>
   );
 }
@@ -92,34 +122,7 @@ function Header() {
         <div className="g2"></div>
         <div className="g3"></div>
         <div className="g4"></div>
-        <div className="g5"></div>
-        <div className="interactive"></div>
-        <div className="header_container">
-          <h1>Jaga</h1>
-          <div className="header_svglogo">
-            <span>
-              <a
-                rel="noreferrer"
-                target="_blank"
-                href="https://www.linkedin.com/in/jaga-live/"
-              >
-                LinkedIn
-              </a>
-            </span>
-            <span>
-              <a
-                rel="noreferrer"
-                target="_blank"
-                href="https://github.com/jaga-live"
-              >
-                Github
-              </a>
-            </span>
-          </div>
-          <div>
-            <a href="https://drive.google.com">Resume</a>
-          </div>
-        </div>
+
         <div className="body_about">
           <h1>Jagadheesh M</h1>
           <p>Backend Developer</p>
@@ -191,43 +194,8 @@ function Header() {
 function Body() {
   const [isOpen, setIsOpen] = useState("DevOps");
   return (
-    <div className="body_container">
-      <div className="body_workexperience">
-        <h2>Work Experience</h2>
-        <div className="body_workexp_grid">
-          <div className="sorice blur-animation text-blur">
-            <img alt="Sorice Logo" src={SoriceLogo} width={50} />
-            <h3>Sorice Solutions · Full-time</h3>
-            <p>Backend Developer</p>
-            <p>Feb 2023 - Present · 2 yrs</p>
-          </div>
-          <div className="aveon blur-animation text-blur">
-            <img alt="Aveon Logo" src={AveonLogo} width={50} />
-            <h3>AVEON Infotech Pvt. Ltd. · Full-time</h3>
-            <p>Senior Backend Developer</p>
-            <p>Apr 2022 - Jan 2023 · 10 mos</p>
-          </div>
-          <div className="iresponsive blur-animation text-blur">
-            <img alt="iResponsive Logo" src={ResponsiveLogo} width={50} />
-            <h3>iResponsive Solutions · Full-time</h3>
-            <p>Senior Backend Developer</p>
-            <p>Apr 2022 - Jan 2023 · 10 mos</p>
-          </div>
-          <div className="leora blur-animation text-blur">
-            <img alt="Leora Logo" src={LeoraLogo} width={50} />
-            <h3>Leora Solutions LLP · Full-time</h3>
-            <p>Back End Developer</p>
-            <p>Jul 2020 - Apr 2022 · 1 yr 10 mos</p>
-          </div>
-          <div className="nanban blur-animation text-blur">
-            <img alt="Nanban Logo" src={NanbanLogo} width={50} />
-            <h3>Nanban Tech Ventures · Internship</h3>
-            <p>Web Developer</p>
-            <p>Apr 2020 - Dec 2020 · 9 mos</p>
-          </div>
-        </div>
-      </div>
-      <div className="body_about">
+    <div className="body_container ">
+      <div id="skills" className="body_about section">
         <h1>Skills</h1>
         <p>Tools and technologies I enjoy working with</p>
       </div>
@@ -442,6 +410,41 @@ function Body() {
               </div>
             </div>
           )}
+        </div>
+        <div id="experience" className="body_workexperience section">
+          <h1>Work Experience</h1>
+          <div className="body_workexp_grid">
+            <div className="sorice blur-animation text-blur">
+              <img alt="Sorice Logo" src={SoriceLogo} width={50} />
+              <h3>Sorice Solutions · Full-time</h3>
+              <p>Backend Developer</p>
+              <p>Feb 2023 - Present · 2 yrs</p>
+            </div>
+            <div className="aveon blur-animation text-blur">
+              <img alt="Aveon Logo" src={AveonLogo} width={50} />
+              <h3>AVEON Infotech Pvt. Ltd. · Full-time</h3>
+              <p>Senior Backend Developer</p>
+              <p>Apr 2022 - Jan 2023 · 10 mos</p>
+            </div>
+            <div className="iresponsive blur-animation text-blur">
+              <img alt="iResponsive Logo" src={ResponsiveLogo} width={50} />
+              <h3>iResponsive Solutions · Full-time</h3>
+              <p>Senior Backend Developer</p>
+              <p>Apr 2022 - Jan 2023 · 10 mos</p>
+            </div>
+            <div className="leora blur-animation text-blur">
+              <img alt="Leora Logo" src={LeoraLogo} width={50} />
+              <h3>Leora Solutions LLP · Full-time</h3>
+              <p>Back End Developer</p>
+              <p>Jul 2020 - Apr 2022 · 1 yr 10 mos</p>
+            </div>
+            <div className="nanban blur-animation text-blur">
+              <img alt="Nanban Logo" src={NanbanLogo} width={50} />
+              <h3>Nanban Tech Ventures · Internship</h3>
+              <p>Web Developer</p>
+              <p>Apr 2020 - Dec 2020 · 9 mos</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
