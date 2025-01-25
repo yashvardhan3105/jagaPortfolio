@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import NanbanLogo from "../src/Assets/nanban_logo.jpeg";
 import LeoraLogo from "../src/Assets/leora_logo.jpeg";
@@ -39,24 +39,43 @@ export default function App() {
     };
   }, []);
 
+  //
+  const interBubbleRef = useRef(null);
+
+  useEffect(() => {
+    const interBubble = interBubbleRef.current;
+    let curX = 0;
+    let curY = 0;
+    let tgX = 0;
+    let tgY = 0;
+
+    function move() {
+      curX += (tgX - curX) / 20;
+      curY += (tgY - curY) / 20;
+      if (interBubble) {
+        interBubble.style.transform = `translate(${Math.round(
+          curX
+        )}px, ${Math.round(curY)}px)`;
+      }
+      requestAnimationFrame(move);
+    }
+
+    function handleMouseMove(event) {
+      tgX = event.clientX;
+      tgY = event.clientY;
+    }
+
+    window.addEventListener("mousemove", handleMouseMove);
+    move();
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   return (
-    <div className="main">
-      <div className="absolute inset-0 justify-center">
-        <div className="opacity-50 bg-shape1 bg-teal bg-blur"></div>
-        <div className="opacity-50 bg-shape2 bg-teal bg-blur"></div>
-        <div className="opacity-50 bg-shape1 bg-teal bg-blur"></div>
-        <div className="opacity-50 bg-shape2 bg-teal bg-blur"></div>
-
-        <div className="opacity-50 bg-shape1 bg-teal bg-blur"></div>
-        <div className="opacity-50 bg-shape2 bg-teal bg-blur"></div>
-        <div className="opacity-50 bg-shape1 bg-teal bg-blur"></div>
-        <div className="opacity-50 bg-shape2 bg-teal bg-blur"></div>
-
-        <div className="opacity-50 bg-shape2 bg-teal bg-blur"></div>
-        <div className="opacity-50 bg-shape1 bg-teal bg-blur"></div>
-        <div className="opacity-50 bg-shape2 bg-teal bg-blur"></div>
-        <div className="opacity-50 bg-shape1 bg-teal bg-blur"></div>
-      </div>
+    <div className="container">
       <Header />
       <Body />
       <Footer />
@@ -66,47 +85,104 @@ export default function App() {
 
 function Header() {
   return (
-    <div className="header_container">
-      <h1>JAGA</h1>
-      <div className="header_svglogo">
-        <span>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            href="https://www.linkedin.com/in/jaga-live/"
-          >
-            <svg
-              fill="white"
-              width="20px"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              data-name="Layer 1"
-            >
-              <path d="M20.47,2H3.53A1.45,1.45,0,0,0,2.06,3.43V20.57A1.45,1.45,0,0,0,3.53,22H20.47a1.45,1.45,0,0,0,1.47-1.43V3.43A1.45,1.45,0,0,0,20.47,2ZM8.09,18.74h-3v-9h3ZM6.59,8.48h0a1.56,1.56,0,1,1,0-3.12,1.57,1.57,0,1,1,0,3.12ZM18.91,18.74h-3V13.91c0-1.21-.43-2-1.52-2A1.65,1.65,0,0,0,12.85,13a2,2,0,0,0-.1.73v5h-3s0-8.18,0-9h3V11A3,3,0,0,1,15.46,9.5c2,0,3.45,1.29,3.45,4.06Z" />
-            </svg>
-          </a>
-        </span>
-        <span>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            href="https://github.com/jaga-live"
-          >
-            <svg
-              fill="white"
-              width="20px"
-              viewBox="-2 -2 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="xMinYMin"
-              class="jam jam-github"
-            >
-              <path d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091 2.026 2.026 0 0 1-.872-.39 1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813.282.186.566.28.852.28.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234 5.314 5.314 0 0 1-1.223-.507 3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365-.177-.564-.266-1.215-.266-1.952 0-1.049.342-1.942 1.027-2.68-.32-.788-.29-1.673.091-2.652.252-.079.625-.02 1.119.175.494.195.856.362 1.086.5.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143.39.98.424 1.864.103 2.653.685.737 1.028 1.63 1.028 2.68 0 .737-.089 1.39-.267 1.957-.177.568-.407 1.023-.689 1.366-.282.343-.633.63-1.053.865-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z" />
-            </svg>
-          </a>
-        </span>
-      </div>
-      <div>
-        <a href="https://drive.google.com">Resume</a>
+    <div className="main">
+      <div className="gradient-bg">
+        <div className="gradient-container"></div>
+        <div className="g1"></div>
+        <div className="g2"></div>
+        <div className="g3"></div>
+        <div className="g4"></div>
+        <div className="g5"></div>
+        <div className="interactive"></div>
+        <div className="header_container">
+          <h1>Jaga</h1>
+          <div className="header_svglogo">
+            <span>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                href="https://www.linkedin.com/in/jaga-live/"
+              >
+                LinkedIn
+              </a>
+            </span>
+            <span>
+              <a
+                rel="noreferrer"
+                target="_blank"
+                href="https://github.com/jaga-live"
+              >
+                Github
+              </a>
+            </span>
+          </div>
+          <div>
+            <a href="https://drive.google.com">Resume</a>
+          </div>
+        </div>
+        <div className="body_about">
+          <h1>Jagadheesh M</h1>
+          <p>Backend Developer</p>
+          <div className="body_contact">
+            <div className="body_contact_all">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.linkedin.com/in/jaga-live/"
+                className="body_contact_linkedin"
+              >
+                <div>
+                  <svg
+                    fill="blue"
+                    width="40px"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    data-name="Layer 1"
+                  >
+                    <path d="M20.47,2H3.53A1.45,1.45,0,0,0,2.06,3.43V20.57A1.45,1.45,0,0,0,3.53,22H20.47a1.45,1.45,0,0,0,1.47-1.43V3.43A1.45,1.45,0,0,0,20.47,2ZM8.09,18.74h-3v-9h3ZM6.59,8.48h0a1.56,1.56,0,1,1,0-3.12,1.57,1.57,0,1,1,0,3.12ZM18.91,18.74h-3V13.91c0-1.21-.43-2-1.52-2A1.65,1.65,0,0,0,12.85,13a2,2,0,0,0-.1.73v5h-3s0-8.18,0-9h3V11A3,3,0,0,1,15.46,9.5c2,0,3.45,1.29,3.45,4.06Z" />
+                  </svg>
+                </div>
+              </a>
+              <a
+                href="mailto:jagadheesh6@gmail.com"
+                className="body_contact_gmail"
+              >
+                <div>
+                  <svg width="40px" height="40px" viewBox="0 0 32 32">
+                    <path
+                      d="M22.0515 8.52295L16.0644 13.1954L9.94043 8.52295V8.52421L9.94783 8.53053V15.0732L15.9954 19.8466L22.0515 15.2575V8.52295Z"
+                      fill="#EA4335"
+                    />
+                    <path
+                      d="M23.6231 7.38639L22.0508 8.52292V15.2575L26.9983 11.459V9.17074C26.9983 9.17074 26.3978 5.90258 23.6231 7.38639Z"
+                      fill="#FBBC05"
+                    />
+                    <path
+                      d="M22.0508 15.2575V23.9924H25.8428C25.8428 23.9924 26.9219 23.8813 26.9995 22.6513V11.459L22.0508 15.2575Z"
+                      fill="#34A853"
+                    />
+                    <path
+                      d="M9.94811 24.0001V15.0732L9.94043 15.0669L9.94811 24.0001Z"
+                      fill="#C5221F"
+                    />
+                    <path
+                      d="M9.94014 8.52404L8.37646 7.39382C5.60179 5.91001 5 9.17692 5 9.17692V11.4651L9.94014 15.0667V8.52404Z"
+                      fill="#C5221F"
+                    />
+                    <path
+                      d="M9.94043 8.52441V15.0671L9.94811 15.0734V8.53073L9.94043 8.52441Z"
+                      fill="#C5221F"
+                    />
+                    <path
+                      d="M5 11.4668V22.6591C5.07646 23.8904 6.15673 24.0003 6.15673 24.0003H9.94877L9.94014 15.0671L5 11.4668Z"
+                      fill="#4285F4"
+                    />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -116,15 +192,6 @@ function Body() {
   const [isOpen, setIsOpen] = useState("DevOps");
   return (
     <div className="body_container">
-      <div className="body_about">
-        <h1>Jagadheesh M</h1>
-        <p>
-          Backend Developer with 4 years of hands-on experience in Node.js,
-          NestJS, and TypeScript, specializing in building scalable and
-          maintainable backend systems with a strong emphasis on clean code and
-          best practices.
-        </p>
-      </div>
       <div className="body_workexperience">
         <h2>Work Experience</h2>
         <div className="body_workexp_grid">
@@ -161,7 +228,7 @@ function Body() {
         </div>
       </div>
       <div className="body_about">
-        <h2>Skills</h2>
+        <h1>Skills</h1>
         <p>Tools and technologies I enjoy working with</p>
       </div>
       <div className="body_skill">
@@ -377,68 +444,6 @@ function Body() {
           )}
         </div>
       </div>
-      <div className="body_contact">
-        <h2>Contact</h2>
-        <p>I would like to work with you ...</p>
-        <div className="body_contact_all">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://www.linkedin.com/in/jaga-live/"
-            className="body_contact_linkedin"
-          >
-            <div>
-              <svg
-                fill="white"
-                width="40px"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                data-name="Layer 1"
-              >
-                <path d="M20.47,2H3.53A1.45,1.45,0,0,0,2.06,3.43V20.57A1.45,1.45,0,0,0,3.53,22H20.47a1.45,1.45,0,0,0,1.47-1.43V3.43A1.45,1.45,0,0,0,20.47,2ZM8.09,18.74h-3v-9h3ZM6.59,8.48h0a1.56,1.56,0,1,1,0-3.12,1.57,1.57,0,1,1,0,3.12ZM18.91,18.74h-3V13.91c0-1.21-.43-2-1.52-2A1.65,1.65,0,0,0,12.85,13a2,2,0,0,0-.1.73v5h-3s0-8.18,0-9h3V11A3,3,0,0,1,15.46,9.5c2,0,3.45,1.29,3.45,4.06Z" />
-              </svg>
-            </div>
-            <div>
-              <p>LinkedIn</p>
-            </div>
-          </a>
-          <a href="mailto:jagadheesh6@gmail.com" className="body_contact_gmail">
-            <div>
-              <svg width="40px" height="40px" viewBox="0 0 32 32">
-                <path
-                  d="M22.0515 8.52295L16.0644 13.1954L9.94043 8.52295V8.52421L9.94783 8.53053V15.0732L15.9954 19.8466L22.0515 15.2575V8.52295Z"
-                  fill="#EA4335"
-                />
-                <path
-                  d="M23.6231 7.38639L22.0508 8.52292V15.2575L26.9983 11.459V9.17074C26.9983 9.17074 26.3978 5.90258 23.6231 7.38639Z"
-                  fill="#FBBC05"
-                />
-                <path
-                  d="M22.0508 15.2575V23.9924H25.8428C25.8428 23.9924 26.9219 23.8813 26.9995 22.6513V11.459L22.0508 15.2575Z"
-                  fill="#34A853"
-                />
-                <path
-                  d="M9.94811 24.0001V15.0732L9.94043 15.0669L9.94811 24.0001Z"
-                  fill="#C5221F"
-                />
-                <path
-                  d="M9.94014 8.52404L8.37646 7.39382C5.60179 5.91001 5 9.17692 5 9.17692V11.4651L9.94014 15.0667V8.52404Z"
-                  fill="#C5221F"
-                />
-                <path
-                  d="M9.94043 8.52441V15.0671L9.94811 15.0734V8.53073L9.94043 8.52441Z"
-                  fill="#C5221F"
-                />
-                <path
-                  d="M5 11.4668V22.6591C5.07646 23.8904 6.15673 24.0003 6.15673 24.0003H9.94877L9.94014 15.0671L5 11.4668Z"
-                  fill="#4285F4"
-                />
-              </svg>
-            </div>
-            <p>Gmail</p>
-          </a>
-        </div>
-      </div>
     </div>
   );
 }
@@ -446,7 +451,7 @@ function Body() {
 function Footer() {
   return (
     <div className="footer_container">
-      <h4>Copywrite 2025 Jaga</h4>
+      <h4>Made by Yash Vardhan</h4>
     </div>
   );
 }
