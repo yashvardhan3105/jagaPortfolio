@@ -13,7 +13,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  z-index: 30;
 }
 
 .header_container {
@@ -24,11 +23,10 @@
   background: rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(9.1px);
   -webkit-backdrop-filter: blur(9.1px);
   border: 1px solid rgba(255, 255, 255, 0.513);
   z-index: 80;
-  filter: url(#goo);
 }
 
 .header_container a {
@@ -252,7 +250,6 @@
   display: flex;
   flex-direction: row;
   gap: 20%;
-  z-index: 10;
 }
 
 .body_contact_linkedin {
@@ -334,11 +331,11 @@
   position: absolute;
   background: radial-gradient(
       circle at center,
-      rgba(var(--color1), 0.8) 0,
+      rgba(var(--color1), 0.3) 0,
       rgba(var(--color1), 0) 50%
     )
     no-repeat;
-  mix-blend-mode: var(--blending);
+  mix-blend-mode: var();
   width: 50%;
   height: 50%;
   top: calc(50% - var(--circle-size) / 2);
@@ -354,11 +351,11 @@
   position: absolute;
   background: radial-gradient(
       circle at center,
-      rgba(var(--color2), 0.8) 0,
+      rgba(var(--color2), 0.3) 0,
       rgba(var(--color2), 0) 50%
     )
     no-repeat;
-  mix-blend-mode: var(--blending);
+  mix-blend-mode: var();
 
   width: 50%;
   height: 50%;
@@ -375,11 +372,11 @@
   position: absolute;
   background: radial-gradient(
       circle at center,
-      rgba(var(--color3), 0.8) 0,
+      rgba(var(--color3), 0.3) 0,
       rgba(var(--color3), 0) 50%
     )
     no-repeat;
-  mix-blend-mode: var(--blending);
+  mix-blend-mode: var();
 
   width: 50%;
   height: 50%;
@@ -396,11 +393,11 @@
   position: absolute;
   background: radial-gradient(
       circle at center,
-      rgba(var(--color4), 0.8) 0,
+      rgba(var(--color4), 0.3) 0,
       rgba(var(--color4), 0) 50%
     )
     no-repeat;
-  mix-blend-mode: var(--blending);
+  mix-blend-mode: var();
 
   width: 50%;
   height: 50%;
@@ -423,4 +420,49 @@
   height: 20px;
   margin-top: -20px;
   visibility: hidden;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .g1,
+  .g2,
+  .g3,
+  .g4 {
+    width: 100%;
+    height: 20%;
+  }
+  .body_container {
+    padding-top: 0%;
+    margin-top: 0% !important;
+  }
+
+  .header_svglogo {
+    display: none;
+  }
+  .body_contact_buttons {
+    padding-top: 40%;
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 10;
+  }
+
+  .body_contact_buttons button {
+    margin-left: -20px;
+    margin-right: 30px;
+  }
+  .body_about p {
+    font-size: 30px;
+  }
+
+  .body_about h1 {
+    font-size: 40px !important;
+  }
+
+  .body_skill_list {
+    display: flex;
+    flex-direction: column;
+  }
 }

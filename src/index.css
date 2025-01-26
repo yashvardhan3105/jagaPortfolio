@@ -26,11 +26,10 @@ body {
   background-repeat: no-repeat;
   --color-bg1: white;
   --color-bg2: white;
-  --color1: 18, 113, 255;
+  --color1: 140, 100, 255;
   --color2: 221, 74, 255;
   --color3: 100, 220, 255;
   --color4: 200, 50, 50;
-  --color5: 180, 180, 50;
   --color-interactive: 140, 100, 255;
   --circle-size: 80%;
   --blending: hard-light;
