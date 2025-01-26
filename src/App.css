@@ -18,8 +18,6 @@
 .header_container {
   display: flex;
   top: 0;
-  justify-content: space-between;
-  align-items: flex-start;
   background: rgba(255, 255, 255, 0.16);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -29,15 +27,18 @@
   z-index: 80;
 }
 
-.header_container a {
+.header_container h1 {
+  font-family: "Birthstone";
+}
+
+.header_svglogo a {
   text-decoration: none;
-  margin-left: auto;
   height: 20px;
   width: 8em;
   position: relative;
   top: 2em;
-  right: 2em;
   font-family: "Sohne Regular";
+  left: 35em;
 }
 
 .header_container h1 {
@@ -283,13 +284,13 @@
 
 @keyframes moveVertical {
   0% {
-    transform: translateY(-10%);
+    transform: translateY(-100%);
   }
   50% {
-    transform: translateY(10%);
+    transform: translateY(100%);
   }
   100% {
-    transform: translateY(-10%);
+    transform: translateY(-100%);
   }
 }
 
@@ -336,8 +337,8 @@
     )
     no-repeat;
   mix-blend-mode: var();
-  width: 50%;
-  height: 50%;
+  width: var(--circle-size);
+  height: var(--circle-size);
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
 
@@ -357,8 +358,8 @@
     no-repeat;
   mix-blend-mode: var();
 
-  width: 50%;
-  height: 50%;
+  width: var(--circle-size);
+  height: var(--circle-size);
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
 
@@ -378,8 +379,8 @@
     no-repeat;
   mix-blend-mode: var();
 
-  width: 50%;
-  height: 50%;
+  width: var(--circle-size);
+  height: var(--circle-size);
   top: calc(50% - var(--circle-size) / 2 + 200px);
   left: calc(50% - var(--circle-size) / 2 - 500px);
 
@@ -399,8 +400,8 @@
     no-repeat;
   mix-blend-mode: var();
 
-  width: 50%;
-  height: 50%;
+  width: var(--circle-size);
+  height: var(--circle-size);
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
 
