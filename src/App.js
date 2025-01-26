@@ -65,21 +65,24 @@ function Navbar() {
         </a>
 
         <div className="header_svglogo">
-          <span>
-            <a href="#skills">Skills</a>
-          </span>
-          <span>
-            <a href="#experience">Experience</a>
-          </span>
-          <span>
-            <a href="#projects">Projects</a>
-          </span>
-          <span>
-            <a href="#interests">Interests</a>
-          </span>
-          <span className="resume">
+          <div className="header_svglogo_tags">
+            <span>
+              <a href="#skills">Skills</a>
+            </span>
+            <span>
+              <a href="#experience">Experience</a>
+            </span>
+            <span>
+              <a href="#projects">Projects</a>
+            </span>
+            <span>
+              <a href="#interests">Interests</a>
+            </span>
+          </div>
+
+          <div className="resume">
             <a href="https://drive.google.com">Resume</a>
-          </span>
+          </div>
         </div>
       </div>
     </div>
