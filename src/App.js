@@ -178,7 +178,7 @@ function Header() {
 function Body() {
   const [isOpen, setIsOpen] = useState("DevOps");
   return (
-    <div className="body_container ">
+    <div className="body_container">
       <div id="skills" className="body_about section">
         <h1>Skills</h1>
         <p>Tools and technologies I enjoy working with</p>
@@ -317,6 +317,14 @@ function Body() {
             <p>Apr 2020 - Dec 2020 · 9 mos</p>
           </div>
         </div>
+      </div>
+      <div id="projects" className="body_projects section">
+        {/* Projects */}
+        <h1>Projects</h1>
+      </div>
+      <div id="interests" className="body_interests section">
+        <h1>Interests</h1>
+        {/* Interests */}
       </div>
     </div>
   );
