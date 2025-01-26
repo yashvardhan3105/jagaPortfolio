@@ -8,6 +8,8 @@
   src: url(../src/Assets/Fonts/Sohne\ Bold.otf);
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Birthstone&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
 canvas {
   position: fixed;
   touch-action: none;
